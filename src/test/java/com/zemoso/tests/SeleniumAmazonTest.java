@@ -8,9 +8,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,34 +17,25 @@ import java.util.concurrent.TimeUnit;
 public class SeleniumAmazonTest {
     public static WebDriver driver;
     @BeforeSuite
-    public void initializeDriver(){
+    public void beforeSuite(){
         System.setProperty("webdriver.chrome.driver","/home/abhim/Documents/chromedriver_linux64/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
-    @DataProvider(name = "Driver")
-    public WebDriver getAWebDriver(){
-        return driver;
+        amazonLogin();
     }
 
     @AfterSuite
-    public void closeDown(){
+    public void afterSuite(){
         driver.close();
         driver.quit();
     }
-    @Test
-    public void tc001_testAmazonLoginAndAddToCart(){
-        driver.get("http://www.amazon.in");
-        driver.findElement(By.id("nav-link-accountList")).click();
-        driver.findElement(By.id("ap_email")).sendKeys("colouredpages@gmail.com");
-        driver.findElement(By.id("continue")).click();
-        driver.findElement(By.id("ap_password")).sendKeys("");
-        driver.findElement(By.id("signInSubmit")).click();
+    @Test()
+    public void tc001_testAddingItemToCart(){
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
         searchBox.sendKeys("Todays deals");
         searchBox.sendKeys(Keys.RETURN);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         String searchResultSelector = "div.s-main-slot.s-result-list.s-search-results.sg-row " +
                 "div[data-index='5'] img";
         waitTillSelectorVisible(searchResultSelector);
@@ -75,31 +64,7 @@ public class SeleniumAmazonTest {
         assert Integer.parseInt(cartCount.getText()) == 1;
     }
 
-    private void waitTillSelectorVisible(String selector) {
-        FluentWait wait = new FluentWait(driver);
-        wait.withTimeout(Duration.ofSeconds(15));
-        wait.pollingEvery(Duration.ofMillis(500));
-        wait.ignoring(NoSuchElementException.class);
-        WebElement selectVis = driver.findElement(By.cssSelector(selector));
-        wait.until(ExpectedConditions.elementToBeClickable(selectVis));
-    }
-
-    private WebElement waitForCartCount(String count) {
-        FluentWait wait = new FluentWait(driver);
-        wait.withTimeout(Duration.ofSeconds(15));
-        wait.pollingEvery(Duration.ofMillis(500));
-        wait.ignoring(NoSuchElementException.class);
-        WebElement cartCount = driver.findElement(By.id("nav-cart-count"));
-        wait.until(ExpectedConditions.textToBePresentInElement(cartCount, count));
-        return cartCount;
-    }
-
-    private void addToCart() {
-        driver.findElement(By.id("add-to-cart-button")).click();
-
-    }
-
-    @Test(enabled = false)
+    @Test()
     public void tc002_searchForMobilesAndAddLastToCart(){
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
         searchBox.sendKeys("Mobiles");
@@ -121,7 +86,7 @@ public class SeleniumAmazonTest {
         }
     }
 
-    @Test(priority = 3, enabled = false)
+    @Test(priority = 3,enabled = false)
     public void navigateToCartAndCheckDelivery() throws InterruptedException {
         driver.get("http://www.amazon.in");
         driver.findElement(By.id("nav-cart-count-container")).click();
@@ -146,12 +111,48 @@ public class SeleniumAmazonTest {
                 By.cssSelector("[name='address-ui-widgets-addr-details-address-type-and-business-hours']")));
         actions.moveToElement(addressType.getWrappedElement());
         actions.perform();
-
-        addressType.selectByValue("COM");
+        String dropDownSelector = "a[data-value='COM']";
+        waitTillSelectorVisible(dropDownSelector);
+        driver.findElement(By.cssSelector(dropDownSelector)).click();
         driver.findElement(By.id("address-ui-widgets-form-submit-button input")).click();
 
-        String x = driver.findElement(By.id("shippingOptionFormId")).getText();
-        System.out.println(x);
+        WebElement shippingOptionForm = driver.findElement(By.id("shippingOptionForm"));
+        String allText = shippingOptionForm.getText();
+        assert allText.contains("Magnifique");
+        System.out.println(allText);
+
+    }
+
+    private void amazonLogin() {
+        driver.get("http://www.amazon.in");
+        driver.findElement(By.id("nav-link-accountList")).click();
+        driver.findElement(By.id("ap_email")).sendKeys("colouredpages@gmail.com");
+        driver.findElement(By.id("continue")).click();
+        driver.findElement(By.id("ap_password")).sendKeys("");
+        driver.findElement(By.id("signInSubmit")).click();
+    }
+
+    private void waitTillSelectorVisible(String selector) {
+        FluentWait wait = new FluentWait(driver);
+        wait.withTimeout(Duration.ofSeconds(15));
+        wait.pollingEvery(Duration.ofMillis(500));
+        wait.ignoring(NoSuchElementException.class);
+        WebElement selectVis = driver.findElement(By.cssSelector(selector));
+        wait.until(ExpectedConditions.elementToBeClickable(selectVis));
+    }
+
+    private WebElement waitForCartCount(String count) {
+        FluentWait wait = new FluentWait(driver);
+        wait.withTimeout(Duration.ofSeconds(15));
+        wait.pollingEvery(Duration.ofMillis(500));
+        wait.ignoring(NoSuchElementException.class);
+        WebElement cartCount = driver.findElement(By.id("nav-cart-count"));
+        wait.until(ExpectedConditions.textToBePresentInElement(cartCount, count));
+        return cartCount;
+    }
+
+    private void addToCart() {
+        driver.findElement(By.id("add-to-cart-button")).click();
 
     }
 

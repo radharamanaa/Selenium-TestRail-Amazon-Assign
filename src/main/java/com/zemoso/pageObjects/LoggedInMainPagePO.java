@@ -4,10 +4,10 @@ import com.zemoso.pageObjects.base.BasePagePO;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoggedInMainPageCO extends BasePagePO {
-    By mainNav = By.id("nav-link-accountList");
+public class LoggedInMainPagePO extends BasePagePO {
+    private By mainNav = By.id("nav-link-accountList");
 
-    public LoggedInMainPageCO(WebDriver driver) {
+    public LoggedInMainPagePO(WebDriver driver) {
         super(driver);
     }
     public YourAccountPO navigateToYourAccountPage(){

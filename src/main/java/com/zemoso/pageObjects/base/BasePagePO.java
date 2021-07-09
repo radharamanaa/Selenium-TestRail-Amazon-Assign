@@ -8,8 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public abstract class BasePagePO {
-    By searchBox = By.id("twotabsearchtextbox");
-    By goToCart = By.id("nav-cart-count-container");
+    private By searchBox = By.id("twotabsearchtextbox");
+    private By goToCart = By.id("nav-cart-count-container");
     protected WebDriver driver;
     public BasePagePO(WebDriver driver) {
         this.driver = driver;

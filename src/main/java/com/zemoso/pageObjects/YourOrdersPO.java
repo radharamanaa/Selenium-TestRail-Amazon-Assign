@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class YourOrdersPO extends BasePagePO {
 
-    By orderFilter = By.cssSelector("select#orderFilter");
+    private By orderFilter = By.cssSelector("select#orderFilter");
     public YourOrdersPO(WebDriver driver) {
         super(driver);
     }

@@ -6,6 +6,7 @@
         <classes>
             <class name="com.zemoso.tests.SeleniumAmazonTest" />
             <class name="com.zemoso.tests.YourOrdersTest" />
+            <class name="com.zemoso.tests.AddressAdditionTest" />
         </classes>
     </test>
 </suite>
