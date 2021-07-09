@@ -1,9 +1,9 @@
 package com.zemoso.tests;
 
+import com.zemoso.pageObjects.AddAddressPO;
 import com.zemoso.pageObjects.LoggedInMainPagePO;
 import com.zemoso.pageObjects.YourAccountPO;
 import com.zemoso.pageObjects.YourAddressesPO;
-import org.omg.CORBA.TIMEOUT;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
@@ -18,7 +18,9 @@ public class AddressAdditionTest {
         LoggedInMainPagePO mainPageCO = new LoggedInMainPagePO(driver);
         YourAccountPO accountPO = mainPageCO.navigateToYourAccountPage();
         YourAddressesPO addressesPO = accountPO.navigateToAddressesPO();
-        addressesPO.navigateToAddressAddPage();
+        AddAddressPO addressPO = addressesPO.navigateToAddressAddPage();
+        addressPO.addAddressAndAssertExistence("ZeMoSo Technologies Pvt Ltd","9666738943",
+                "500008","802/803 MJR Magnifique","Raidurgam", "Hyderabad");
 
     }
 }

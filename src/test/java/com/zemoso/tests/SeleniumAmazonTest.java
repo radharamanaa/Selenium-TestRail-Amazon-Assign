@@ -30,7 +30,7 @@ public class SeleniumAmazonTest {
         driver.close();
         driver.quit();
     }
-    @Test()
+    @Test
     public void tc001_testAddingItemToCart(){
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
         searchBox.sendKeys("Todays deals");
@@ -64,7 +64,7 @@ public class SeleniumAmazonTest {
         assert Integer.parseInt(cartCount.getText()) == 1;
     }
 
-    @Test()
+    @Test
     public void tc002_searchForMobilesAndAddLastToCart(){
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
         searchBox.sendKeys("Mobiles");
@@ -84,43 +84,6 @@ public class SeleniumAmazonTest {
             WebElement cartCount = waitForCartCount("2");
             assert Integer.parseInt(cartCount.getText()) == 2;
         }
-    }
-
-    @Test(priority = 3,enabled = false)
-    public void navigateToCartAndCheckDelivery() throws InterruptedException {
-        driver.get("http://www.amazon.in");
-        driver.findElement(By.id("nav-cart-count-container")).click();
-        WebElement inputField = driver.findElement(By.cssSelector("input[data-feature-id='proceed-to-checkout-action']"));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(inputField);
-        actions.perform();
-        inputField.click();
-        driver.findElement(By.id("address-ui-widgets-enterAddressFullName"))
-                .sendKeys("ZeMoSo Technologies Pvt Ltd");
-        driver.findElement(By.id("address-ui-widgets-enterAddressPhoneNumber"))
-                .sendKeys("9666738943");
-        driver.findElement(By.id("address-ui-widgets-enterAddressPostalCode"))
-                .sendKeys("500008");
-        WebElement addressLine = driver.findElement(By.id("address-ui-widgets-enterAddressLine1"));
-        addressLine
-                .sendKeys("802/803 MJR Magnifique");
-        addressLine.sendKeys(Keys.ARROW_DOWN);
-        addressLine.sendKeys(Keys.RETURN);
-        driver.findElement(By.id("address-ui-widgets-addr-details-address-type-and-business-hours")).click();
-        Select addressType = new Select(driver.findElement(
-                By.cssSelector("[name='address-ui-widgets-addr-details-address-type-and-business-hours']")));
-        actions.moveToElement(addressType.getWrappedElement());
-        actions.perform();
-        String dropDownSelector = "a[data-value='COM']";
-        waitTillSelectorVisible(dropDownSelector);
-        driver.findElement(By.cssSelector(dropDownSelector)).click();
-        driver.findElement(By.id("address-ui-widgets-form-submit-button input")).click();
-
-        WebElement shippingOptionForm = driver.findElement(By.id("shippingOptionForm"));
-        String allText = shippingOptionForm.getText();
-        assert allText.contains("Magnifique");
-        System.out.println(allText);
-
     }
 
     private void amazonLogin() {
