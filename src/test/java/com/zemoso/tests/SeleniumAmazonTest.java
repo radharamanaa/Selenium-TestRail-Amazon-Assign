@@ -6,9 +6,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -17,13 +17,17 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class SeleniumAmazonTest {
-    WebDriver driver;
+    public static WebDriver driver;
     @BeforeSuite
     public void initializeDriver(){
         System.setProperty("webdriver.chrome.driver","/home/abhim/Documents/chromedriver_linux64/chromedriver");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+    @DataProvider(name = "Driver")
+    public WebDriver getAWebDriver(){
+        return driver;
     }
 
     @AfterSuite
@@ -37,17 +41,19 @@ public class SeleniumAmazonTest {
         driver.findElement(By.id("nav-link-accountList")).click();
         driver.findElement(By.id("ap_email")).sendKeys("colouredpages@gmail.com");
         driver.findElement(By.id("continue")).click();
-        driver.findElement(By.id("ap_password")).sendKeys("R1dh!madhava");
+        driver.findElement(By.id("ap_password")).sendKeys("");
         driver.findElement(By.id("signInSubmit")).click();
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
         searchBox.sendKeys("Todays deals");
         searchBox.sendKeys(Keys.RETURN);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        String searchResultSelector = "div.s-main-slot.s-result-list.s-search-results.sg-row " +
+                "div[data-index='5'] img";
+        waitTillSelectorVisible(searchResultSelector);
         List<WebElement> products =  driver.findElements(By
-                .cssSelector("div.s-main-slot.s-result-list.s-search-results.sg-row " +
-                "div[data-index='5'] img"));
+                .cssSelector(searchResultSelector));
         assert products.size()==1:"Size was not 1";
-        if(products.size()!=1){
+        if(products.size() != 1){
             assert false;
             driver.close();
             return;
@@ -62,19 +68,19 @@ public class SeleniumAmazonTest {
             Select selectDropDown = new Select(driver.findElement(
                     By.id("native_dropdown_selected_size_name")));
             selectDropDown.selectByIndex(1);
-            waitTillSelectVisible();
+            waitTillSelectorVisible("select#quantity");
         }
         addToCart();
         WebElement cartCount = waitForCartCount("1");
         assert Integer.parseInt(cartCount.getText()) == 1;
     }
 
-    private void waitTillSelectVisible() {
+    private void waitTillSelectorVisible(String selector) {
         FluentWait wait = new FluentWait(driver);
         wait.withTimeout(Duration.ofSeconds(15));
         wait.pollingEvery(Duration.ofMillis(500));
         wait.ignoring(NoSuchElementException.class);
-        WebElement selectVis = driver.findElement(By.cssSelector("select#quantity"));
+        WebElement selectVis = driver.findElement(By.cssSelector(selector));
         wait.until(ExpectedConditions.elementToBeClickable(selectVis));
     }
 
@@ -93,7 +99,7 @@ public class SeleniumAmazonTest {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void tc002_searchForMobilesAndAddLastToCart(){
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
         searchBox.sendKeys("Mobiles");
