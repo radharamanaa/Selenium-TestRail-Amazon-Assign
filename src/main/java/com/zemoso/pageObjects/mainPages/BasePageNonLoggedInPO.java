@@ -1,4 +1,4 @@
-package com.zemoso.pageObjects;
+package com.zemoso.pageObjects.mainPages;
 
 import com.zemoso.pageObjects.base.BasePagePO;
 import org.openqa.selenium.WebDriver;

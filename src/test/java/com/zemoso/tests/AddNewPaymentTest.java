@@ -1,6 +1,7 @@
 package com.zemoso.tests;
 
 import com.zemoso.pageObjects.*;
+import com.zemoso.pageObjects.mainPages.LoggedInMainPagePO;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 

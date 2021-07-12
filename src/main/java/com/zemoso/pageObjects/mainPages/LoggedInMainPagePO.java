@@ -1,5 +1,6 @@
-package com.zemoso.pageObjects;
+package com.zemoso.pageObjects.mainPages;
 
+import com.zemoso.pageObjects.YourAccountPO;
 import com.zemoso.pageObjects.base.BasePagePO;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

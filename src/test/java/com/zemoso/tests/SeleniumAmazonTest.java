@@ -1,5 +1,7 @@
 package com.zemoso.tests;
 
+import com.sun.org.apache.xml.internal.security.Init;
+import config.InitialConfig;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -16,17 +18,21 @@ import java.util.concurrent.TimeUnit;
 
 public class SeleniumAmazonTest {
     public static WebDriver driver;
+    public static InitialConfig globalConfig;
     @BeforeSuite
     public void beforeSuite(){
-        System.setProperty("webdriver.chrome.driver","/home/abhim/Documents/chromedriver_linux64/chromedriver");
+        globalConfig = new InitialConfig();
+
+        System.setProperty("webdriver.chrome.driver", globalConfig.getDriverPath());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        amazonLogin();
+        amazonLogin(globalConfig.getBaseURL(),
+                globalConfig.getEmail(), globalConfig.getPassword());
     }
 
     @AfterSuite
-    public void afterSuite(){
+    public void suiteTeardown(){
         driver.close();
         driver.quit();
     }
@@ -86,12 +92,12 @@ public class SeleniumAmazonTest {
         }
     }
 
-    private void amazonLogin() {
-        driver.get("http://www.amazon.in");
+    private void amazonLogin(String baseURL, String userName, String password) {
+        driver.get(baseURL);
         driver.findElement(By.id("nav-link-accountList")).click();
-        driver.findElement(By.id("ap_email")).sendKeys("colouredpages@gmail.com");
+        driver.findElement(By.id("ap_email")).sendKeys(userName);
         driver.findElement(By.id("continue")).click();
-        driver.findElement(By.id("ap_password")).sendKeys("");
+        driver.findElement(By.id("ap_password")).sendKeys(password);
         driver.findElement(By.id("signInSubmit")).click();
     }
 

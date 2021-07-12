@@ -1,7 +1,7 @@
 package com.zemoso.pageObjects.base;
 
+import com.zemoso.pageObjects.mainPages.BasePageNonLoggedInPO;
 import com.zemoso.pageObjects.CartPO;
-import com.zemoso.pageObjects.SearchPagePO;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -19,11 +19,11 @@ public abstract class BasePagePO {
         return driver;
     }
 
-    public SearchPagePO searchItem(String item){
+    public BasePageNonLoggedInPO searchItem(String item){
         WebElement searchBoxx = driver.findElement(searchBox);
         searchBoxx.sendKeys(item);
         searchBoxx.sendKeys(Keys.RETURN);
-        return new SearchPagePO(driver);
+        return new BasePageNonLoggedInPO(driver);
     }
 
     public CartPO navigateToCart(){

@@ -1,7 +1,7 @@
 package com.zemoso.tests;
 
 import com.zemoso.pageObjects.AddAddressPO;
-import com.zemoso.pageObjects.LoggedInMainPagePO;
+import com.zemoso.pageObjects.mainPages.LoggedInMainPagePO;
 import com.zemoso.pageObjects.YourAccountPO;
 import com.zemoso.pageObjects.YourAddressesPO;
 import org.openqa.selenium.WebDriver;
