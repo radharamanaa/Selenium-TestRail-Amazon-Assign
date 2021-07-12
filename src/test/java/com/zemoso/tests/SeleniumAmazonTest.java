@@ -22,6 +22,7 @@ public class SeleniumAmazonTest {
     @BeforeSuite
     public void beforeSuite(){
         //we need to have properties in application.properties as required in below class
+
         globalConfig = new InitialConfig();
 
         System.setProperty("webdriver.chrome.driver", globalConfig.getDriverPath());

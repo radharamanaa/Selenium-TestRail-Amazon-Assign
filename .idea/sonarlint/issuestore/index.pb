@@ -6,8 +6,6 @@ f
 g
 7src/main/java/com/zemoso/pageObjects/YourAccountPO.java,d/4/d43327329f8e1f182398372f077ce802d84ec140
 l
-<src/main/java/com/zemoso/pageObjects/LoggedInMainPagePO.java,9/b/9b12aa7e4ee5ff1cae6823594d7bd99a93f2b172
-l
 <src/main/java/com/zemoso/pageObjects/base/GenericDriver.java,6/6/664502b3a0d6e9ac9747bdd16d8d3f9cef2f9489
 j
 :src/main/java/com/zemoso/pageObjects/PaymentOptionsPO.java,7/9/799ca885210faa6aa287e25510b189a5a75c45f6
@@ -17,24 +15,10 @@ f
 6src/main/java/com/zemoso/pageObjects/AddAddressPO.java,6/8/68b1f957459ae195ef3a0a8b613ea6984dcbef4e
 b
 2src/test/java/com/zemoso/tests/YourOrdersTest.java,a/e/aefe2badec90babc7f9fc179f4b71a6e66e6ff8e
-`
-0src/main/java/com/zemoso/pageObjects/CartPO.java,6/c/6c988123c47b9b0ce31bcbb6293d9b4b1838f7b0
-i
-9src/main/java/com/zemoso/pageObjects/YourAddressesPO.java,7/d/7de6b850b8efd3f52610b869e9fddf2671993ed0
-q
-Asrc/main/java/com/zemoso/pageObjects/ChooseDeliveryOptionsPO.java,d/8/d850cdf87a415d97a77a53d2b7161746d2dbd595
 y
 Isrc/main/java/com/zemoso/pageObjects/mainPages/BasePageNonLoggedInPO.java,8/f/8f2cec832aadc480a7a35ec055e4e013ec1e2a2b
 :
 
 testng.xml,5/2/522a7a4e21649af06297e31a9e33f13bb4fd3022
-i
-9src/main/java/com/zemoso/pageObjects/base/BasePagePO.java,4/0/406a207af732e412f7033017439d3e97ce3c48da
-g
-7src/test/java/com/zemoso/tests/AddressAdditionTest.java,0/a/0a9b391166fd953b73f9529ddc499f8aa874d069
 Y
 )src/test/resources/application.properties,7/5/75fe9d7fbca55a88d01eb60696ec758ea3b4eba0
-W
-'src/test/java/config/InitialConfig.java,a/1/a1d415cba948cf3ca70d9cdfb2655f18b22327fa
-f
-6src/test/java/com/zemoso/tests/SeleniumAmazonTest.java,2/a/2ae888c9901c06c694b979469b1b33abec6999c8
