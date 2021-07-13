@@ -4,6 +4,7 @@ import com.zemoso.pageObjects.AddAddressPO;
 import com.zemoso.pageObjects.mainPages.LoggedInMainPagePO;
 import com.zemoso.pageObjects.YourAccountPO;
 import com.zemoso.pageObjects.YourAddressesPO;
+import config.InitialConfig;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
@@ -13,7 +14,7 @@ public class AddressAdditionTest {
     @Test
     public void tc005_addAndVerifyAddress(){
         WebDriver driver  = SeleniumAmazonTest.driver;
-        driver.get("http://www.amazon.in");
+        driver.get(InitialConfig.getBaseURL());
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         LoggedInMainPagePO mainPageCO = new LoggedInMainPagePO(driver);
         YourAccountPO accountPO = mainPageCO.navigateToYourAccountPage();

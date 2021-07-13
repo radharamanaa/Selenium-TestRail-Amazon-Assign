@@ -2,6 +2,7 @@ package com.zemoso.tests;
 
 import com.zemoso.pageObjects.*;
 import com.zemoso.pageObjects.mainPages.LoggedInMainPagePO;
+import config.InitialConfig;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
@@ -12,7 +13,7 @@ public class AddNewPaymentTest {
     @Test
     public void tc0006_addAPaymentMethod(){
         WebDriver driver = SeleniumAmazonTest.driver;
-        driver.get("http://www.amazon.in");
+        driver.get(InitialConfig.getBaseURL());
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         LoggedInMainPagePO mainPagePO = new LoggedInMainPagePO(driver);
         CartPO cartPO = mainPagePO.navigateToCart();

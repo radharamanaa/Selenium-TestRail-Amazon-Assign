@@ -18,19 +18,16 @@ import java.util.concurrent.TimeUnit;
 
 public class SeleniumAmazonTest {
     public static WebDriver driver;
-    public static InitialConfig globalConfig;
     @BeforeSuite
     public void beforeSuite(){
         //we need to have properties in application.properties as required in below class
 
-        globalConfig = new InitialConfig();
-
-        System.setProperty("webdriver.chrome.driver", globalConfig.getDriverPath());
+        System.setProperty("webdriver.chrome.driver", InitialConfig.getDriverPath());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        amazonLogin(globalConfig.getBaseURL(),
-                globalConfig.getEmail(), globalConfig.getPassword());
+        amazonLogin(InitialConfig.getBaseURL(),
+                InitialConfig.getEmail(), InitialConfig.getPassword());
     }
 
     @AfterSuite
@@ -56,7 +53,7 @@ public class SeleniumAmazonTest {
             return;
         }
         products.get(0).click();
-        List<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        List<String> tabs2 = new ArrayList<> (driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         List<WebElement> stateBuybox = driver.findElements(
                 By.cssSelector("div.a-section.a-spacing-small.a-text-center strong"));
@@ -86,7 +83,7 @@ public class SeleniumAmazonTest {
             actions.moveToElement(lastMobile);
             actions.perform();
             lastMobile.findElement(By.tagName("img")).click();
-            List<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+            List<String> tabs2 = new ArrayList<> (driver.getWindowHandles());
             driver.switchTo().window(tabs2.get(tabs2.size()-1));
             addToCart();
             WebElement cartCount = waitForCartCount("2");
