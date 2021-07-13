@@ -21,7 +21,7 @@ public class SeleniumAmazonTest {
     @BeforeSuite
     public void beforeSuite(){
         //we need to have properties in application.properties as required in below class
-
+        new InitialConfig();
         System.setProperty("webdriver.chrome.driver", InitialConfig.getDriverPath());
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -37,15 +37,22 @@ public class SeleniumAmazonTest {
     }
     @Test
     public void tc001_testAddingItemToCart(){
+        //this and the next method are not on based on POM pattern
+
+        //find the search bar
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
+        //search for todays deals
         searchBox.sendKeys("Todays deals");
         searchBox.sendKeys(Keys.RETURN);
+        //introducing an implicit wait
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //select the third item from the search results -selector
         String searchResultSelector = "div.s-main-slot.s-result-list.s-search-results.sg-row " +
                 "div[data-index='5'] img";
         waitTillSelectorVisible(searchResultSelector);
         List<WebElement> products =  driver.findElements(By
                 .cssSelector(searchResultSelector));
+        //we will find exactly one element
         assert products.size()==1:"Size was not 1";
         if(products.size() != 1){
             assert false;
@@ -54,38 +61,47 @@ public class SeleniumAmazonTest {
         }
         products.get(0).click();
         List<String> tabs2 = new ArrayList<> (driver.getWindowHandles());
+        //switching to the newly opened tab of the search result
         driver.switchTo().window(tabs2.get(1));
         List<WebElement> stateBuybox = driver.findElements(
                 By.cssSelector("div.a-section.a-spacing-small.a-text-center strong"));
-
+        //if the size drop down is present enter the if condition
         if(stateBuybox.size()!=0){
             Select selectDropDown = new Select(driver.findElement(
                     By.id("native_dropdown_selected_size_name")));
-            selectDropDown.selectByIndex(1);
+            selectDropDown.selectByIndex(1);//select a size
+            //wait for required changes in the page
             waitTillSelectorVisible("select#quantity");
         }
+        //add the product to cart
         addToCart();
+        //wait for the cart count to become one (fluently)
         WebElement cartCount = waitForCartCount("1");
         assert Integer.parseInt(cartCount.getText()) == 1;
     }
 
     @Test
     public void tc002_searchForMobilesAndAddLastToCart(){
+        //this method is also not based on POM
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
         searchBox.sendKeys("Mobiles");
         searchBox.sendKeys(Keys.RETURN);
         List<WebElement> mobiles = driver.findElements(By
                 .cssSelector("div[data-component-type='s-search-result'].s-result-item"));
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //if mobiles are present in the search result
         if(mobiles.size() > 0){
             Actions actions = new Actions(driver);
             WebElement lastMobile = mobiles.get(mobiles.size() - 1);
+            //scrolll to the last mobile and click
             actions.moveToElement(lastMobile);
             actions.perform();
             lastMobile.findElement(By.tagName("img")).click();
             List<String> tabs2 = new ArrayList<> (driver.getWindowHandles());
+            //switch to the last opened tab
             driver.switchTo().window(tabs2.get(tabs2.size()-1));
             addToCart();
+            //wait for the cart count to become 2
             WebElement cartCount = waitForCartCount("2");
             assert Integer.parseInt(cartCount.getText()) == 2;
         }
@@ -101,7 +117,7 @@ public class SeleniumAmazonTest {
     }
 
     private void waitTillSelectorVisible(String selector) {
-        FluentWait wait = new FluentWait(driver);
+        FluentWait<WebDriver> wait = new FluentWait<>(driver);
         wait.withTimeout(Duration.ofSeconds(15));
         wait.pollingEvery(Duration.ofMillis(500));
         wait.ignoring(NoSuchElementException.class);
@@ -110,7 +126,7 @@ public class SeleniumAmazonTest {
     }
 
     private WebElement waitForCartCount(String count) {
-        FluentWait wait = new FluentWait(driver);
+        FluentWait<WebDriver> wait = new FluentWait<>(driver);
         wait.withTimeout(Duration.ofSeconds(15));
         wait.pollingEvery(Duration.ofMillis(500));
         wait.ignoring(NoSuchElementException.class);

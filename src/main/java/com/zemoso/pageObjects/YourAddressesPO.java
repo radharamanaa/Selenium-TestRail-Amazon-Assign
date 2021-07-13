@@ -13,14 +13,14 @@ public class YourAddressesPO extends BasePagePO {
     public YourAddressesPO(WebDriver driver) {
         super(driver);
     }
-    public AddAddressPO navigateToAddressAddPage(){
+    public AddAddressPO navigateToAddNewAddressPage(){
         driver.findElement(addNewAddress).click();
         return new AddAddressPO(driver);
     }
 
     public boolean isTextInPageAddresses(String text){
         List<WebElement> list = driver.findElements(By.xpath("//*[contains(text(),'" + text + "')]"));
-        return list.size()>0?true:false;
+        return list.isEmpty();
     }
 
 }

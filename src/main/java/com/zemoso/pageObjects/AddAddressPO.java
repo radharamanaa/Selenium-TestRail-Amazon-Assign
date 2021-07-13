@@ -26,9 +26,9 @@ public class AddAddressPO extends BasePagePO {
     }
 
 
-    public void addAddressAndAssertExistence(String fullName, String phoneNumber,
-                                             String postalCode, String addressLine1,
-                                             String addressLine2, String townOrCity){
+    public YourAddressesPO addAddress(String fullName, String phoneNumber,
+                                      String postalCode, String addressLine1,
+                                      String addressLine2){
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(this.fullName).sendKeys(fullName);
         driver.findElement(this.phoneNumber).sendKeys(phoneNumber);
@@ -42,8 +42,8 @@ public class AddAddressPO extends BasePagePO {
         driver.findElement(this.selectOfficeHours).click();
         driver.findElement(this.clickSelectionSelectTag).click();
         driver.findElement(this.formSubmitButton).click();
-        YourAddressesPO addressesPO = new YourAddressesPO(driver);
-        assert addressesPO.isTextInPageAddresses(addressLine1);
+        return new YourAddressesPO(driver);
+
 
     }
     public ChooseDeliveryOptionsPO clickonMostRecentlyUsedAddress(){
@@ -58,7 +58,7 @@ public class AddAddressPO extends BasePagePO {
         }
     }
     private void waitForAutoCityAddInCityDD() {
-        FluentWait wait = new FluentWait(driver);
+        FluentWait<WebDriver> wait = new FluentWait<>(driver);
         wait.withTimeout(Duration.ofSeconds(15));
         wait.pollingEvery(Duration.ofMillis(500));
         wait.ignoring(NoSuchElementException.class);

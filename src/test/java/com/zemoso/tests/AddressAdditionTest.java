@@ -16,12 +16,19 @@ public class AddressAdditionTest {
         WebDriver driver  = SeleniumAmazonTest.driver;
         driver.get(InitialConfig.getBaseURL());
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //main logged in search page
         LoggedInMainPagePO mainPageCO = new LoggedInMainPagePO(driver);
+        //goto your account
         YourAccountPO accountPO = mainPageCO.navigateToYourAccountPage();
+        //navigate to addresses page
         YourAddressesPO addressesPO = accountPO.navigateToAddressesPO();
-        AddAddressPO addressPO = addressesPO.navigateToAddressAddPage();
-        addressPO.addAddressAndAssertExistence("ZeMoSo Technologies Pvt Ltd","9666738943",
-                "500008","802/803 MJR Magnifique","Raidurgam", "Hyderabad");
+        //navigate to page where you can add a new address
+        AddAddressPO addressPO = addressesPO.navigateToAddNewAddressPage();
+        //add a
+        String companyName = "ZeMoSo Technologies Pvt Ltd";
+        YourAddressesPO addressesPO1 = addressPO.addAddress(companyName, "9666738943",
+                "500008", "802/803 MJR Magnifique", "Raidurgam");
+        assert addressesPO1.isTextInPageAddresses(companyName);
 
     }
 }

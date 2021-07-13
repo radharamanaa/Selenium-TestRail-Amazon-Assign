@@ -15,6 +15,7 @@ public class AddNewPaymentTest {
         WebDriver driver = SeleniumAmazonTest.driver;
         driver.get(InitialConfig.getBaseURL());
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //logged in index page
         LoggedInMainPagePO mainPagePO = new LoggedInMainPagePO(driver);
         CartPO cartPO = mainPagePO.navigateToCart();
         AddAddressPO addressPO = cartPO.clickOnProceedToBuy();
