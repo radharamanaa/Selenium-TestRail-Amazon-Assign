@@ -3,6 +3,7 @@ package com.zemoso.tests;
 import com.zemoso.pageObjects.*;
 import com.zemoso.pageObjects.mainPages.LoggedInMainPagePO;
 import config.InitialConfig;
+import config.TestRailConfig;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
@@ -24,12 +25,14 @@ public class AddNewPaymentTest {
         assert deliveryOptionsPO.getFirstDeliveredItemDate() != null;
         PaymentOptionsPO paymentOptionsPO = deliveryOptionsPO.clickContinue();
         paymentOptionsPO.addPaymentMethod();
+
         //very unfortunately, uncomment below if you wish to see result
 //        try {
 //            Thread.sleep(20000);
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
+        TestRailConfig.addTestResult(InitialConfig.getAddNewPayMethod(),true);
         assert true;
     }
 }

@@ -26,7 +26,41 @@ public class InitialConfig {
             e.printStackTrace();
             System.exit(-1);
         }
+        TestRailConfig.initialize();
     }
+
+    public static String getAddItemToCart(){
+        return props.getProperty("addItemToCart");
+    }
+    public static String getAddLastMobToCart(){
+        return props.getProperty("addLastMobToCart");
+    }
+    public static String getAddNewPayMethod(){
+        return props.getProperty("addNewPayMethod");
+    }
+    public static String getAddNewAddress(){
+        return props.getProperty("addNewAddress");
+    }
+    public static String getSeeLastYearOrders(){
+        return props.getProperty("seeLastYearOrders");
+    }
+    public static String getUserNameTR(){
+        return props.getProperty("usernameTestRail");
+    }
+    public static String getDomainTestRail(){
+        return props.getProperty("domainTestRail");
+    }
+    public static String getPasswordTR(){
+        return props.getProperty("passwordTestRail");
+    }
+    public static String getProjectIdTR(){
+        return props.getProperty("projectIdTestRail");
+    }
+    public static String getSuiteIdTestRail(){
+        return props.getProperty("suiteIdTestRail");
+    }
+
+
     public static String getDriverPath(){
         return props.getProperty("driverPath");
     }

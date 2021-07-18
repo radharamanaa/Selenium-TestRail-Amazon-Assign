@@ -42,9 +42,8 @@ public class AddAddressPO extends BasePagePO {
         driver.findElement(this.selectOfficeHours).click();
         driver.findElement(this.clickSelectionSelectTag).click();
         driver.findElement(this.formSubmitButton).click();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return new YourAddressesPO(driver);
-
-
     }
     public ChooseDeliveryOptionsPO clickonMostRecentlyUsedAddress(){
         Optional<WebElement> first = driver.findElements(firstAddressButtonSelector)

@@ -1,10 +1,10 @@
 package com.zemoso.tests;
 
-import com.sun.org.apache.xml.internal.security.Init;
-import com.zemoso.pageObjects.mainPages.LoggedInMainPagePO;
 import com.zemoso.pageObjects.YourAccountPO;
 import com.zemoso.pageObjects.YourOrdersPO;
+import com.zemoso.pageObjects.mainPages.LoggedInMainPagePO;
 import config.InitialConfig;
+import config.TestRailConfig;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
@@ -23,6 +23,8 @@ public class YourOrdersTest {
         ordersPO.selectLastOneYearOrders();
         String currentVisibleValueOfDurationOrders = ordersPO.getCurrentVisibleValueOfDurationOrders();
         System.out.println(currentVisibleValueOfDurationOrders);
-        assert currentVisibleValueOfDurationOrders.equals("2021");
+        boolean res = currentVisibleValueOfDurationOrders.equals("2021");
+        TestRailConfig.addTestResult(InitialConfig.getSeeLastYearOrders(),res);
+        assert res;
     }
 }

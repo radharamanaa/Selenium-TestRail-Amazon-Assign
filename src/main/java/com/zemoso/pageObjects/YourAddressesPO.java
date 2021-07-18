@@ -20,7 +20,7 @@ public class YourAddressesPO extends BasePagePO {
 
     public boolean isTextInPageAddresses(String text){
         List<WebElement> list = driver.findElements(By.xpath("//*[contains(text(),'" + text + "')]"));
-        return list.isEmpty();
+        return !list.isEmpty();
     }
 
 }

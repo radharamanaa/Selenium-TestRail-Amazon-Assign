@@ -1,7 +1,7 @@
 package com.zemoso.tests;
 
-import com.sun.org.apache.xml.internal.security.Init;
 import config.InitialConfig;
+import config.TestRailConfig;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class SeleniumAmazonTest {
 
     @AfterSuite
     public void suiteTeardown(){
+        TestRailConfig.finishUp();
         driver.close();
         driver.quit();
     }
@@ -77,7 +79,9 @@ public class SeleniumAmazonTest {
         addToCart();
         //wait for the cart count to become one (fluently)
         WebElement cartCount = waitForCartCount("1");
-        assert Integer.parseInt(cartCount.getText()) == 1;
+        boolean result = Integer.parseInt(cartCount.getText()) == 1;
+        TestRailConfig.addTestResult(InitialConfig.getAddItemToCart(), result);
+        assert result;
     }
 
     @Test
@@ -103,7 +107,9 @@ public class SeleniumAmazonTest {
             addToCart();
             //wait for the cart count to become 2
             WebElement cartCount = waitForCartCount("2");
-            assert Integer.parseInt(cartCount.getText()) == 2;
+            boolean res = Integer.parseInt(cartCount.getText()) == 2;
+            TestRailConfig.addTestResult(InitialConfig.getAddLastMobToCart(),res);
+            assert res;
         }
     }
 

@@ -5,6 +5,7 @@ import com.zemoso.pageObjects.mainPages.LoggedInMainPagePO;
 import com.zemoso.pageObjects.YourAccountPO;
 import com.zemoso.pageObjects.YourAddressesPO;
 import config.InitialConfig;
+import config.TestRailConfig;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
@@ -28,7 +29,9 @@ public class AddressAdditionTest {
         String companyName = "ZeMoSo Technologies Pvt Ltd";
         YourAddressesPO addressesPO1 = addressPO.addAddress(companyName, "9666738943",
                 "500008", "802/803 MJR Magnifique", "Raidurgam");
-        assert addressesPO1.isTextInPageAddresses(companyName);
+        boolean isTextInPageAddresses = addressesPO1.isTextInPageAddresses(companyName);
+        TestRailConfig.addTestResult(InitialConfig.getAddNewAddress(), isTextInPageAddresses);
+        assert isTextInPageAddresses;
 
     }
 }
