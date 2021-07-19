@@ -16,7 +16,7 @@ public class TestRailConfig {
     public static void initialize(){
         testRail = TestRail.builder(InitialConfig.getDomainTestRail(),
                 InitialConfig.getUserNameTR(),InitialConfig.getPasswordTR()).applicationName("Amazon Tests").build();
-        project = testRail.projects().add(new Project().setName("Second-Project-1")).execute();
+        project = testRail.projects().add(new Project().setName("Second-Project-2")).execute();
         Suite suite = testRail.suites().add(project.getId(), new Suite()
 //                .setId(Integer.parseInt(InitialConfig.getSuiteIdTestRail()))
                 .setName("Amazon Functional tests")).execute();

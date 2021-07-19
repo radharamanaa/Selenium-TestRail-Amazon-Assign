@@ -65,6 +65,10 @@ public class SeleniumAmazonTest {
         List<String> tabs2 = new ArrayList<> (driver.getWindowHandles());
         //switching to the newly opened tab of the search result
         driver.switchTo().window(tabs2.get(1));
+        int expectedCartCount = 0;
+        Select quantitySelect = new Select(driver.findElement(By.id("quantity")));
+        expectedCartCount += Integer.parseInt(quantitySelect.getFirstSelectedOption().getText());
+        expectedCartCount += getCurrentCartCount(driver);
         List<WebElement> stateBuybox = driver.findElements(
                 By.cssSelector("div.a-section.a-spacing-small.a-text-center strong"));
         //if the size drop down is present enter the if condition
@@ -78,15 +82,18 @@ public class SeleniumAmazonTest {
         //add the product to cart
         addToCart();
         //wait for the cart count to become one (fluently)
-        WebElement cartCount = waitForCartCount("1");
-        boolean result = Integer.parseInt(cartCount.getText()) == 1;
+        WebElement cartCount = waitForCartCount(expectedCartCount +"");
+        boolean result = Integer.parseInt(cartCount.getText()) == expectedCartCount;
         TestRailConfig.addTestResult(InitialConfig.getAddItemToCart(), result);
         assert result;
     }
-
+    private int getCurrentCartCount(WebDriver driver){
+        return Integer.parseInt(driver.findElement(By.id("nav-cart-count")).getText());
+    }
     @Test
     public void tc002_searchForMobilesAndAddLastToCart(){
         //this method is also not based on POM
+        int currentCartCount = getCurrentCartCount(driver);
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
         searchBox.sendKeys("Mobiles");
         searchBox.sendKeys(Keys.RETURN);
@@ -105,9 +112,10 @@ public class SeleniumAmazonTest {
             //switch to the last opened tab
             driver.switchTo().window(tabs2.get(tabs2.size()-1));
             addToCart();
+            ++currentCartCount;
             //wait for the cart count to become 2
-            WebElement cartCount = waitForCartCount("2");
-            boolean res = Integer.parseInt(cartCount.getText()) == 2;
+            WebElement cartCount = waitForCartCount(currentCartCount+"");
+            boolean res = Integer.parseInt(cartCount.getText()) == currentCartCount;
             TestRailConfig.addTestResult(InitialConfig.getAddLastMobToCart(),res);
             assert res;
         }
