@@ -20,7 +20,6 @@ public class TestRailConfig {
                 InitialConfig.getUserNameTR(),InitialConfig.getPasswordTR()).applicationName("Amazon Tests").build();
         project = testRail.projects().add(new Project().setName("Monday Project-3")).execute();
         Suite suite = testRail.suites().add(project.getId(), new Suite()
-//                .setId(Integer.parseInt(InitialConfig.getSuiteIdTestRail()))
                 .setName("Amazon Functional tests")).execute();
         Section section = testRail.sections().add(project.getId(),
                 new Section().setSuiteId(suite.getId()).setName("All cases")).execute();

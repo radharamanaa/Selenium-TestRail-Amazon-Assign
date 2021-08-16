@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Command_line_suite" class="navigator-link">
-              <span class="suite-name border-skipped">Command line suite</span>
+              <span class="suite-name border-failed">Command line suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -93,41 +93,50 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">5 methods,  5 skipped,  </span>
+                    <span class="method-stats">5 methods, 1 failed,   4 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title skipped">Skipped methods</span>
-                    <span class="show-or-hide-methods skipped">
-                      <a href="#" panel-name="suite-Command_line_suite" class="hide-methods skipped suite-Command_line_suite"> (hide)</a> <!-- hide-methods skipped suite-Command_line_suite -->
-                      <a href="#" panel-name="suite-Command_line_suite" class="show-methods skipped suite-Command_line_suite"> (show)</a> <!-- show-methods skipped suite-Command_line_suite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Command_line_suite" class="hide-methods failed suite-Command_line_suite"> (hide)</a> <!-- hide-methods failed suite-Command_line_suite -->
+                      <a href="#" panel-name="suite-Command_line_suite" class="show-methods failed suite-Command_line_suite"> (show)</a> <!-- show-methods failed suite-Command_line_suite -->
                     </span>
-                    <div class="method-list-content skipped suite-Command_line_suite">
+                    <div class="method-list-content failed suite-Command_line_suite">
                       <span>
-                        <img src="skipped.png" width="3%"/>
+                        <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Command_line_suite" title="com.zemoso.tests.AddNewPaymentTest" class="method navigator-link" hash-for-method="tc0006_addAPaymentMethod">tc0006_addAPaymentMethod</a> <!-- method navigator-link -->
                       </span>
                       <br/>
+                    </div> <!-- method-list-content failed suite-Command_line_suite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Command_line_suite" class="hide-methods passed suite-Command_line_suite"> (hide)</a> <!-- hide-methods passed suite-Command_line_suite -->
+                      <a href="#" panel-name="suite-Command_line_suite" class="show-methods passed suite-Command_line_suite"> (show)</a> <!-- show-methods passed suite-Command_line_suite -->
+                    </span>
+                    <div class="method-list-content passed suite-Command_line_suite">
                       <span>
-                        <img src="skipped.png" width="3%"/>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Command_line_suite" title="com.zemoso.tests.SeleniumAmazonTest" class="method navigator-link" hash-for-method="tc001_testAddingItemToCart">tc001_testAddingItemToCart</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img src="skipped.png" width="3%"/>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Command_line_suite" title="com.zemoso.tests.SeleniumAmazonTest" class="method navigator-link" hash-for-method="tc002_searchForMobilesAndAddLastToCart">tc002_searchForMobilesAndAddLastToCart</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img src="skipped.png" width="3%"/>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Command_line_suite" title="com.zemoso.tests.AddressAdditionTest" class="method navigator-link" hash-for-method="tc005_addAndVerifyAddress">tc005_addAndVerifyAddress</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
-                        <img src="skipped.png" width="3%"/>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Command_line_suite" title="com.zemoso.tests.YourOrdersTest" class="method navigator-link" hash-for-method="tc005_showLastYearOrders">tc005_showLastYearOrders</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content skipped suite-Command_line_suite -->
+                    </div> <!-- method-list-content passed suite-Command_line_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -139,9 +148,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Command_line_suite" class="panel Command_line_suite">
-          <div class="suite-Command_line_suite-class-skipped">
+          <div class="suite-Command_line_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.zemoso.tests.AddNewPaymentTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -150,52 +159,37 @@
                   <a name="tc0006_addAPaymentMethod">
                   </a> <!-- tc0006_addAPaymentMethod -->
                   <span class="method-name">tc0006_addAPaymentMethod</span>
-                  <div class="stack-trace">java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter
-	at com.codepine.api.testrail.Request.execute(Request.java:114)
-	at config.TestRailConfig.initialize(TestRailConfig.java:21)
-	at config.InitialConfig.&lt;init&gt;(InitialConfig.java:29)
-	at com.zemoso.tests.SeleniumAmazonTest.beforeSuite(SeleniumAmazonTest.java:25)
-Caused by: java.lang.ClassNotFoundException: javax.xml.bind.DatatypeConverter
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	... 33 more
-... Removed 29 stack frames
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;input.a-button-text[value=&apos;Continue&apos;]:first-of-type&quot;}
+  (Session info: chrome=92.0.4515.131)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;4XF6B53&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;5.11.0-25-generic&apos;, java.version: &apos;11.0.11&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 92.0.4515.131, chrome: {chromedriverVersion: 92.0.4515.107 (87a818b10553..., userDataDir: /tmp/.com.google.Chrome.JFFowu}, goog:chromeOptions: {debuggerAddress: localhost:43737}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 9bfcde3957251a2cd9eb37c749f0c179
+*** Element info: {Using=css selector, value=input.a-button-text[value=&apos;Continue&apos;]:first-of-type}
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:420)
+	at org.openqa.selenium.By$ByCssSelector.findElement(By.java:431)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at com.zemoso.pageObjects.ChooseDeliveryOptionsPO.clickContinue(ChooseDeliveryOptionsPO.java:14)
+	at com.zemoso.tests.AddNewPaymentTest.tc0006_addAPaymentMethod(AddNewPaymentTest.java:26)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+... Removed 41 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Command_line_suite-class-skipped -->
-          <div class="suite-Command_line_suite-class-skipped">
+          </div> <!-- suite-Command_line_suite-class-failed -->
+          <div class="suite-Command_line_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
-              <span class="class-name">com.zemoso.tests.AddressAdditionTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="tc005_addAndVerifyAddress">
-                  </a> <!-- tc005_addAndVerifyAddress -->
-                  <span class="method-name">tc005_addAndVerifyAddress</span>
-                  <div class="stack-trace">java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter
-	at com.codepine.api.testrail.Request.execute(Request.java:114)
-	at config.TestRailConfig.initialize(TestRailConfig.java:21)
-	at config.InitialConfig.&lt;init&gt;(InitialConfig.java:29)
-	at com.zemoso.tests.SeleniumAmazonTest.beforeSuite(SeleniumAmazonTest.java:25)
-Caused by: java.lang.ClassNotFoundException: javax.xml.bind.DatatypeConverter
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	... 33 more
-... Removed 29 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Command_line_suite-class-skipped -->
-          <div class="suite-Command_line_suite-class-skipped">
-            <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
+              <img src="passed.png"/>
               <span class="class-name">com.zemoso.tests.YourOrdersTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -204,25 +198,13 @@ Caused by: java.lang.ClassNotFoundException: javax.xml.bind.DatatypeConverter
                   <a name="tc005_showLastYearOrders">
                   </a> <!-- tc005_showLastYearOrders -->
                   <span class="method-name">tc005_showLastYearOrders</span>
-                  <div class="stack-trace">java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter
-	at com.codepine.api.testrail.Request.execute(Request.java:114)
-	at config.TestRailConfig.initialize(TestRailConfig.java:21)
-	at config.InitialConfig.&lt;init&gt;(InitialConfig.java:29)
-	at com.zemoso.tests.SeleniumAmazonTest.beforeSuite(SeleniumAmazonTest.java:25)
-Caused by: java.lang.ClassNotFoundException: javax.xml.bind.DatatypeConverter
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	... 33 more
-... Removed 29 stack frames
-</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Command_line_suite-class-skipped -->
-          <div class="suite-Command_line_suite-class-skipped">
+          </div> <!-- suite-Command_line_suite-class-passed -->
+          <div class="suite-Command_line_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
+              <img src="passed.png"/>
               <span class="class-name">com.zemoso.tests.SeleniumAmazonTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -231,18 +213,6 @@ Caused by: java.lang.ClassNotFoundException: javax.xml.bind.DatatypeConverter
                   <a name="tc001_testAddingItemToCart">
                   </a> <!-- tc001_testAddingItemToCart -->
                   <span class="method-name">tc001_testAddingItemToCart</span>
-                  <div class="stack-trace">java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter
-	at com.codepine.api.testrail.Request.execute(Request.java:114)
-	at config.TestRailConfig.initialize(TestRailConfig.java:21)
-	at config.InitialConfig.&lt;init&gt;(InitialConfig.java:29)
-	at com.zemoso.tests.SeleniumAmazonTest.beforeSuite(SeleniumAmazonTest.java:25)
-Caused by: java.lang.ClassNotFoundException: javax.xml.bind.DatatypeConverter
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	... 33 more
-... Removed 29 stack frames
-</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -250,22 +220,25 @@ Caused by: java.lang.ClassNotFoundException: javax.xml.bind.DatatypeConverter
                   <a name="tc002_searchForMobilesAndAddLastToCart">
                   </a> <!-- tc002_searchForMobilesAndAddLastToCart -->
                   <span class="method-name">tc002_searchForMobilesAndAddLastToCart</span>
-                  <div class="stack-trace">java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter
-	at com.codepine.api.testrail.Request.execute(Request.java:114)
-	at config.TestRailConfig.initialize(TestRailConfig.java:21)
-	at config.InitialConfig.&lt;init&gt;(InitialConfig.java:29)
-	at com.zemoso.tests.SeleniumAmazonTest.beforeSuite(SeleniumAmazonTest.java:25)
-Caused by: java.lang.ClassNotFoundException: javax.xml.bind.DatatypeConverter
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
-	... 33 more
-... Removed 29 stack frames
-</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Command_line_suite-class-skipped -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
+          <div class="suite-Command_line_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.zemoso.tests.AddressAdditionTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="tc005_addAndVerifyAddress">
+                  </a> <!-- tc005_addAndVerifyAddress -->
+                  <span class="method-name">tc005_addAndVerifyAddress</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Command_line_suite-class-passed -->
         </div> <!-- panel Command_line_suite -->
         <div panel-name="test-xml-Command_line_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -325,28 +298,28 @@ data.addRows(5);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'tc0006_addAPaymentMethod')
 data.setCell(0, 2, 'com.zemoso.tests.AddNewPaymentTest')
-data.setCell(0, 3, 0);
+data.setCell(0, 3, 20807);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'tc002_searchForMobilesAndAddLastToCart')
+data.setCell(1, 1, 'tc001_testAddingItemToCart')
 data.setCell(1, 2, 'com.zemoso.tests.SeleniumAmazonTest')
-data.setCell(1, 3, 0);
+data.setCell(1, 3, 17979);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'tc001_testAddingItemToCart')
-data.setCell(2, 2, 'com.zemoso.tests.SeleniumAmazonTest')
-data.setCell(2, 3, 0);
+data.setCell(2, 1, 'tc005_showLastYearOrders')
+data.setCell(2, 2, 'com.zemoso.tests.YourOrdersTest')
+data.setCell(2, 3, 9098);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'tc005_addAndVerifyAddress')
-data.setCell(3, 2, 'com.zemoso.tests.AddressAdditionTest')
-data.setCell(3, 3, 0);
+data.setCell(3, 1, 'tc002_searchForMobilesAndAddLastToCart')
+data.setCell(3, 2, 'com.zemoso.tests.SeleniumAmazonTest')
+data.setCell(3, 3, 7742);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'tc005_showLastYearOrders')
-data.setCell(4, 2, 'com.zemoso.tests.YourOrdersTest')
-data.setCell(4, 3, 0);
+data.setCell(4, 1, 'tc005_addAndVerifyAddress')
+data.setCell(4, 2, 'com.zemoso.tests.AddressAdditionTest')
+data.setCell(4, 3, 6420);
 window.suiteTableData['Command_line_suite']= { tableData: data, tableDiv: 'times-div-Command_line_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 0 ms</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Command_line_suite">
               </div> <!-- times-div-Command_line_suite -->
             </div> <!-- times-div -->
@@ -374,8 +347,6 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.zemoso.tests.SeleniumAmazonTest</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">beforeSuite</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
@@ -384,39 +355,41 @@ return data;
               <div class="chronological-class-name">com.zemoso.tests.YourOrdersTest</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">tc005_showLastYearOrders</span>
-                <span class="method-start">343 ms</span>
+                <span class="method-start">15178 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.zemoso.tests.AddressAdditionTest</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">tc005_addAndVerifyAddress</span>
-                <span class="method-start">346 ms</span>
+                <span class="method-start">24281 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.zemoso.tests.SeleniumAmazonTest</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">tc001_testAddingItemToCart</span>
-                <span class="method-start">346 ms</span>
+                <span class="method-start">30702 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">tc002_searchForMobilesAndAddLastToCart</span>
-                <span class="method-start">346 ms</span>
+                <span class="method-start">48681 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.zemoso.tests.AddNewPaymentTest</div> <!-- chronological-class-name -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">tc0006_addAPaymentMethod</span>
-                <span class="method-start">347 ms</span>
+                <span class="method-start">56425 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">com.zemoso.tests.SeleniumAmazonTest</div> <!-- chronological-class-name -->
               <div class="configuration-suite after">
                 <span class="method-name">suiteTeardown</span>
-                <span class="method-start">377 ms</span>
+                <span class="method-start">77250 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -4,9 +4,9 @@
 <suite name="Test Suite-1" >
     <test name="Test Case-1" >
         <classes>
-            <class name="com.zemoso.tests.SeleniumAmazonTest" />
-            <class name="com.zemoso.tests.YourOrdersTest" />
-            <class name="com.zemoso.tests.AddressAdditionTest" />
+<!--            <class name="com.zemoso.tests.SeleniumAmazonTest" />-->
+<!--            <class name="com.zemoso.tests.YourOrdersTest" />-->
+<!--            <class name="com.zemoso.tests.AddressAdditionTest" />-->
             <class name="com.zemoso.tests.AddNewPaymentTest" />
         </classes>
     </test>

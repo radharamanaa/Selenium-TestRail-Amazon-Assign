@@ -8,24 +8,6 @@
           <include name="tc0006_addAPaymentMethod"/>
         </methods>
       </class> <!-- com.zemoso.tests.AddNewPaymentTest -->
-      <class name="com.zemoso.tests.AddressAdditionTest">
-        <methods>
-          <include name="tc005_addAndVerifyAddress"/>
-        </methods>
-      </class> <!-- com.zemoso.tests.AddressAdditionTest -->
-      <class name="com.zemoso.tests.YourOrdersTest">
-        <methods>
-          <include name="tc005_showLastYearOrders"/>
-        </methods>
-      </class> <!-- com.zemoso.tests.YourOrdersTest -->
-      <class name="com.zemoso.tests.SeleniumAmazonTest">
-        <methods>
-          <include name="tc001_testAddingItemToCart"/>
-          <include name="tc002_searchForMobilesAndAddLastToCart"/>
-          <include name="suiteTeardown"/>
-          <include name="beforeSuite"/>
-        </methods>
-      </class> <!-- com.zemoso.tests.SeleniumAmazonTest -->
     </classes>
   </test> <!-- Command line test(failed) -->
 </suite> <!-- Failed suite [Command line suite] -->

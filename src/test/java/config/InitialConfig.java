@@ -58,17 +58,7 @@ public class InitialConfig {
     public static String getPasswordTR(){
         return props.getProperty("passwordTestRail");
     }
-    public static String getProjectIdTR(){
-        return props.getProperty("projectIdTestRail");
-    }
-    public static String getSuiteIdTestRail(){
-        return props.getProperty("suiteIdTestRail");
-    }
 
-
-    public static String getDriverPath(){
-        return props.getProperty("driverPath");
-    }
     public static String getBaseURL(){
         return props.getProperty("baseUrl");
     }
