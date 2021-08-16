@@ -4,6 +4,7 @@ import com.codepine.api.testrail.TestRail;
 import com.codepine.api.testrail.model.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,8 @@ public class TestRailConfig {
     public static void initialize(){
         testRail = TestRail.builder(InitialConfig.getDomainTestRail(),
                 InitialConfig.getUserNameTR(),InitialConfig.getPasswordTR()).applicationName("Amazon Tests").build();
-        project = testRail.projects().add(new Project().setName("Monday Project-3")).execute();
+        project = testRail.projects().add(new Project().setName("Selenium-Amazon "+LocalDateTime.now()
+                .format(DateTimeFormatter.ISO_OFFSET_DATE))).execute();
         Suite suite = testRail.suites().add(project.getId(), new Suite()
                 .setName("Amazon Functional tests")).execute();
         Section section = testRail.sections().add(project.getId(),
