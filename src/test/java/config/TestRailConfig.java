@@ -25,7 +25,6 @@ public class TestRailConfig {
                 .setName("Amazon Functional tests")).execute();
         Section section = testRail.sections().add(project.getId(),
                 new Section().setSuiteId(suite.getId()).setName("All cases")).execute();
-
         List<CaseField> customCaseFields = testRail.caseFields().list().execute();
         Case addItemToCartCase = testRail.cases().add(section.getId(), new Case().setTitle(InitialConfig.getAddItemToCart()),
                 customCaseFields).execute();
