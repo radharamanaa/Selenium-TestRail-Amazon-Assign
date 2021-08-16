@@ -2,6 +2,7 @@ package com.zemoso.tests;
 
 import config.InitialConfig;
 import config.TestRailConfig;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -23,8 +24,17 @@ public class SeleniumAmazonTest {
     public void beforeSuite(){
         //we need to have properties in application.properties as required in below class
         new InitialConfig();
-        System.setProperty("webdriver.chrome.driver", InitialConfig.getDriverPath());
-        driver = new ChromeDriver();
+        Class<? extends WebDriver> driverClass = ChromeDriver.class;
+        WebDriverManager.getInstance(driverClass).setup();
+        try {
+            driver = driverClass.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         amazonLogin(InitialConfig.getBaseURL(),

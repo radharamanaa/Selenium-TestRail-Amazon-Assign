@@ -26,6 +26,11 @@ public class InitialConfig {
             e.printStackTrace();
             System.exit(-1);
         }
+        try {
+            fileReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         TestRailConfig.initialize();
     }
 

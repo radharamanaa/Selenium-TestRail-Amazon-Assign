@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 1, Errors: 0, Skipped: 6, Time elapsed: 0.681 sec <<< FAILURE!
+beforeSuite(com.zemoso.tests.SeleniumAmazonTest)  Time elapsed: 0.573 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter
+	at com.codepine.api.testrail.Request.execute(Request.java:114)
+	at config.TestRailConfig.initialize(TestRailConfig.java:21)
+	at config.InitialConfig.<init>(InitialConfig.java:29)
+	at com.zemoso.tests.SeleniumAmazonTest.beforeSuite(SeleniumAmazonTest.java:25)
+Caused by: java.lang.ClassNotFoundException: javax.xml.bind.DatatypeConverter
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	... 33 more
+
